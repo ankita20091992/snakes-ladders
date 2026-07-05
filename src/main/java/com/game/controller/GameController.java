@@ -1,4 +1,4 @@
-package com.game.model.GameState;
+package com.game.controller;
 
 import com.game.model.GameState;
 import com.game.service.GameService;
