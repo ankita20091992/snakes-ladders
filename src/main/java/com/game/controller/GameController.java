@@ -3,7 +3,9 @@ package com.game.controller;
 import com.game.model.GameState;
 import com.game.service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 //class declaration block
 //@RestController tell spring this class handles HTTP requests and returns JSON auto. 
@@ -35,7 +37,11 @@ public class GameController {
 //just read and return the current state without changing anything
     @GetMapping("/state")
     public GameState getGameState() {
-        return gameService.getGameState();
+        GameState state = gameService.getGameState();
+        if (state == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Game not started - call /api/game/init first");
+        }
+        return state;
     }
 //Reset endpoint
 @PostMapping("/reset")

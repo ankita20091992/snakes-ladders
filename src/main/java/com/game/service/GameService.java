@@ -4,24 +4,32 @@ import com.game.model.GameState;
 import com.game.model.GameStatus;
 import com.game.model.Player;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.annotation.SessionScope;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 //@Service tells spring to manage this class as a service bean, allowing it to be injected into other components.
-//creates one instance and reuses it everywhere
+//@SessionScope gives each HTTP session its own GameService instance, so concurrent
+//players/browser tabs don't share the same gameState (Spring injects a proxy into the
+//singleton GameController that resolves to the caller's session-bound instance).
 //gameState holds the current state of the game, including player positions, dice value, and game status.
 //gameBoard represents the game board, including the positions of snakes and ladders.
 //random is used to simulate dice rolls.
 @Service
+@SessionScope
 public class GameService {
 	private GameState gameState;
 	private GameBoard gameBoard;
 	private Random random;
 	//GameService() ctor create dice and board
 	public GameService() {
-		this.random = new Random();
+		this(new Random());
+	}
+	//test-only ctor: lets tests inject a controllable Random to script dice rolls
+	public GameService(Random random) {
+		this.random = random;
 		this.gameBoard = new GameBoard();
 	}
 //initGame() creates player 1,2 set game to playing return starting state
