@@ -46,8 +46,13 @@ public class GameService {
 
 //full game logic roll dice,move players,check snake/ladder/wins	
 	public GameState rollDice() {
-		//(Guard-check) if gameState is null or game is finished, return current state without changes
-		if(gameState == null || gameState.getStatus() == GameStatus.FINISHED) {
+		//(Guard-check) if gameState is null, return current state without changes
+		if(gameState == null) {
+			return gameState;
+		}
+		//if game already finished, tell the caller instead of silently no-op'ing
+		if(gameState.getStatus() == GameStatus.FINISHED) {
+			gameState.setMessage("Game already finished - reset to play again.");
 			return gameState;
 		}
 		//who is playing?-gets index 0 or 1 and fetch that player object from list.

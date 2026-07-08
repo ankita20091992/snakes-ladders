@@ -11,24 +11,21 @@ public class GameBoard {
 		public GameBoard() {
 			//creating empty hashmap for snakes
 			snakes = new HashMap<>();
-			snakes.put(99, 54);
-			snakes.put(70, 55);
-			snakes.put(52, 42);
-			snakes.put(25, 5);
-			snakes.put(95, 75);
-			snakes.put(61, 19);
-			snakes.put(87, 24);
-			snakes.put(17, 7);
+			snakes.put(98, 40);
+			snakes.put(84, 63);
+			snakes.put(87, 49);
+			snakes.put(75, 15);
+			snakes.put(56, 8);
+			snakes.put(50, 5);
+			snakes.put(43, 17);
 			//creating empty hashmap for ladders
 			ladders = new HashMap<>();
-			ladders.put(4, 14);
-			ladders.put(9, 31);
-			ladders.put(20, 38);
-			ladders.put(28, 84);
-			ladders.put(40, 59);
-			ladders.put(51, 67);
-			ladders.put(63, 81);
-			ladders.put(71, 91);
+			ladders.put(2, 23);
+			ladders.put(6, 45);
+			ladders.put(20, 59);
+			ladders.put(52, 72);
+			ladders.put(57, 96);
+			ladders.put(71, 92);
 		}
 		//getter methods allow other classes to access these maps
 		public Map<Integer, Integer> getSnakes() { return snakes;}

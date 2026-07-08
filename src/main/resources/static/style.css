@@ -1,0 +1,194 @@
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #1e293b;
+    color: #f1f5f9;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 24px;
+}
+/* container wraps the whole game */
+.container {
+    width: 100%;
+    max-width: 520px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+h1 {
+    font-size: 28px;
+    text-align: center;
+}
+.player-info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 12px;
+}
+.player-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 12px;
+    background: #1e293b;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    font-size: 14px;
+    transition: border-color 0.2s ease;
+}
+.player-card.active {
+    border-color: #facc15;
+    box-shadow: 0 0 8px rgba(250, 204, 21, 0.4);
+}
+.token {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: bold;
+    color: #fff;
+}
+.p1-token { background: #3b82f6; }
+.p2-token { background: #ef4444; }
+
+.board-token {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+.board {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    gap: 2px;
+    background: #334155;
+    border: 2px solid #334155;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.board-art {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+.ladder-rail {
+    stroke: #b45309;
+    stroke-width: 1.4;
+    stroke-linecap: round;
+}
+.ladder-rung {
+    stroke: #fbbf24;
+    stroke-width: 1;
+    stroke-linecap: round;
+}
+.snake-body {
+    fill: none;
+    stroke: #22c55e;
+    stroke-width: 2.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.snake-head {
+    fill: #15803d;
+    stroke: #14532d;
+    stroke-width: 0.5;
+}
+.snake-eye {
+    fill: #fff;
+}
+.snake-tongue {
+    stroke: #ef4444;
+    stroke-width: 0.8;
+    stroke-linecap: round;
+}
+.square {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1e293b;
+}
+.sq-num {
+    font-size: 9px;
+    color: #94a3b8;
+}
+.snake-square {
+    background: #7f1d1d;
+}
+.ladder-square {
+    background: #14532d;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+.dice-display {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1e293b;
+    border: 2px solid #475569;
+    border-radius: 8px;
+    font-size: 22px;
+    font-weight: bold;
+}
+button {
+    padding: 10px 10px;
+    border: none;
+    border-radius: 8px;
+    background: #3b82f6;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+button:hover {
+    background: #2563eb;
+}
+button:disabled {
+    background: #475569;
+    cursor: not-allowed;
+}
+.message {
+    min-height: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #cbd5e1;
+}
+.winner-banner {
+    display: none;
+    width: 100%;
+    text-align: center;
+    padding: 16px;
+    background: #14532d;
+    border-radius: 10px;
+}
+#winner-text {
+    margin-bottom: 12px;
+    font-size: 20px;
+}
